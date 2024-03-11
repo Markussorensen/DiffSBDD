@@ -34,7 +34,8 @@ def merge_configs(config, resume_config):
             warnings.warn(f"Config parameter '{key}' (value: "
                           f"{config[key]}) will be overwritten with value "
                           f"{value} from the checkpoint.")
-        config[key] = value
+        if key != "datadir":
+            config[key] = value
     return config
 
 

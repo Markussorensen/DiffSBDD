@@ -1,0 +1,20 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["--pdbqt_dir", "/data/user/mas/DiffSBDD/data/cancer/cdk46/",
+                     "--sdf_dir", "/data/user/mas/DiffSBDD/data/cancer/cdk46/results/5L2S/moad/",
+                     "--out_dir", "/data/user/mas/DiffSBDD/data/cancer/cdk46/results/5L2S/moad/sdf_out_7SJ3/",
+                     "--new_receptor_target", "7SJ3",
+                     "--new_target_binding_pocket", "A:11 A:12 A:13 A:17 A:20 A:33 A:35 A:56 A:72 A:93 A:94 A:95 A:96 A:97 A:98 A:99 A:102 A:144 A:145 A:147 A:157 A:158",
+                     "--write_csv", "--write_dict"
+                    ]
+        }   
+    ]
+}

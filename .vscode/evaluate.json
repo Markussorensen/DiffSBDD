@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["--outdir", "data/user/mas/DiffSBDD/data/cancer/bcl2/",
+                     "--mol_dirs", "/data/user/mas/DiffSBDD/data/cancer/bcl2/results/6O0K/moad/",
+                                    "/data/user/mas/DiffSBDD/data/cancer/bcl2/results/6O0L/moad/", 
+                                    "/data/user/mas/DiffSBDD/data/cancer/bcl2/results/6O0M/moad/", 
+                                    "/data/user/mas/DiffSBDD/data/cancer/bcl2/results/6O0P/moad/",
+                     "--docking_targets", "6O0K", "6O0L", "6O0M", "6O0P"]
+        }
+    ]
+}

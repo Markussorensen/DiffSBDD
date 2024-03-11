@@ -84,6 +84,13 @@ def write_sdf_file(sdf_path, molecules):
 
     # print(f'Wrote SDF file to {sdf_path}')
 
+def read_sdf_file(sdf_path, sanitize=True, removeHs=False):
+    # NOTE Changed to be compatitble with more versions of rdkit
+    # with Chem.SDMolSupplier(str(sdf_path)) as s:
+    #     return [m for m in s]
+
+    s = Chem.SDMolSupplier(str(sdf_path), removeHs=removeHs, sanitize=sanitize)
+    return [m for m in s]
 
 def residues_to_atoms(x_ca, atom_encoder):
     x = x_ca

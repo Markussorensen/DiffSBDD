@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["/data/user/mas/DiffSBDD/models/models/crossdocked_fullatom_joint.ckpt",
+                     "--pdbfile", "/data/user/mas/DiffSBDD/data/cancer/bcl2/bcl2.pdb", 
+                     "--outdir", "/data/user/mas/DiffSBDD/data/cancer/bcl2/results/", 
+                     "--resi_list", "A:94", "A:97", "A:98", "A:99", "A:100", "A:101", "A:102", "A:103", "A:106", "A:139", "A:143", "A:144", "A:145", "A:146", "A:147", "A:148",
+                     "--n_samples", "100"]
+        }
+    ]
+}

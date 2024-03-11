@@ -379,7 +379,7 @@ class LigandPocketDDPM(pl.LightningModule):
     def test_step(self, data, *args):
         self._shared_eval(data, 'test', *args)
 
-    def validation_epoch_end(self, validation_step_outputs):
+    def on_validation_epoch_end(self, validation_step_outputs):
 
         # Perform validation on single GPU
         if not self.trainer.is_global_zero:
@@ -786,6 +786,9 @@ class LigandPocketDDPM(pl.LightningModule):
         pdb_struct = PDBParser(QUIET=True).get_structure('', pdb_file)[0]
         if pocket_ids is not None:
             # define pocket with list of residues
+            if len(pocket_ids) == 1:
+                pocket_ids = pocket_ids[0].split(' ')
+
             residues = [
                 pdb_struct[x.split(':')[0]][(' ', int(x.split(':')[1]), ' ')]
                 for x in pocket_ids]
@@ -871,7 +874,7 @@ class LigandPocketDDPM(pl.LightningModule):
 
         return molecules
 
-    def configure_gradient_clipping(self, optimizer, optimizer_idx,
+    def configure_gradient_clipping(self, optimizer,
                                     gradient_clip_val, gradient_clip_algorithm):
 
         if not self.clip_grad:

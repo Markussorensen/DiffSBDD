@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["/data/user/mas/DiffSBDD/models/models/crossdocked_fullatom_joint.ckpt",
+                     "--pdbfile", "/data/user/mas/DiffSBDD/data/cancer/bcl2/bcl2_venetoclax.pdb", 
+                     "--outdir", "/data/user/mas/DiffSBDD/data/cancer/bcl2/results/", 
+                     "--ref_ligand", "A:201",
+                     "--n_samples", "100"]
+        }
+    ]
+}

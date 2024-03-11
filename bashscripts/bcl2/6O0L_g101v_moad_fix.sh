@@ -1,0 +1,64 @@
+#!/bin/bash
+
+MODEL_CHECKPOINT="/data/user/mas/DiffSBDD/models/models/moad_fullatom_joint.ckpt"
+PDB_FILE="/data/user/mas/DiffSBDD/data/cancer/bcl2/6O0L.pdb"
+OUT_DIR="/data/user/mas/DiffSBDD/data/cancer/bcl2/results/6O0L/moad/"
+RESI_LIST="A:99 A:100 A:101 A:103 A:104 A:107 A:108 A:111 A:112 A:115 A:133 A:136 A:137 A:143 A:144 A:145 A:146 A:148 A:149 A:152 A:153 A:156 A:198 A:202"
+BATCH_SIZE=16
+N_SAMPLES=16
+N_CORES=2
+GPU_ID=1
+N_JOBS_IN_PARALLEL=4
+JOB_ID_START=384
+NUM_NODES_START=31
+NUM_NODES_END=80
+
+BASE_DIR="/data/user/mas/DiffSBDD/"
+
+# Divide the number og jobs by 4. If it is not divisible by 4, add 1 to the first.
+
+queued_jobs=$((JOB_ID_START-1))
+parallel_job=1
+
+# Go to the base directory
+cd $BASE_DIR
+
+echo "Queued jobs: $queued_jobs"
+
+
+jobs_run=0
+for ((num_nodes = 80; num_nodes >= $NUM_NODES_START; num_nodes-=$N_JOBS_IN_PARALLEL)); do
+    if (($num_nodes > $NUM_NODES_END)); then
+        continue
+    fi
+    echo "Generating ligands for num_nodes_lig = $num_nodes"
+    # Use tsp to queue the job
+    if (( $jobs_run == 0 )); then
+        tsp -N $N_CORES python generate_ligands.py $MODEL_CHECKPOINT \
+            --gpu_id $GPU_ID \
+            --pdbfile $PDB_FILE \
+            --outdir $OUT_DIR \
+            --resi_list $RESI_LIST \
+            --batch_size $BATCH_SIZE \
+            --n_samples $N_SAMPLES \
+            --num_nodes_lig $num_nodes \
+            --sanitize \
+            --relax \
+            --all_frags
+    else
+        tsp -N $N_CORES -D $queued_jobs python generate_ligands.py $MODEL_CHECKPOINT \
+            --gpu_id $GPU_ID \
+            --pdbfile $PDB_FILE \
+            --outdir $OUT_DIR \
+            --resi_list $RESI_LIST \
+            --batch_size $BATCH_SIZE \
+            --n_samples $N_SAMPLES \
+            --num_nodes_lig $num_nodes \
+            --sanitize \
+            --relax \
+            --all_frags
+    fi
+    # Increment the number of queued jobs
+    ((jobs_run++))
+    ((queued_jobs++))
+done

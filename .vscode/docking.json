@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["--pdbqt_dir", "/data/user/mas/DiffSBDD/data/cancer/bcl2/",
+                     "--sdf_dir", "/data/user/mas/DiffSBDD/data/cancer/bcl2/results/6O0L/moad/",
+                     "--out_dir", "/data/user/mas/DiffSBDD/data/cancer/bcl2/results/6O0L/moad/sdf_out_6O0K/",
+                     "--write_csv", "--write_dict"
+                    ]
+        }   
+    ]
+}

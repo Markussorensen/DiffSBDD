@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["--mol_dirs", "/data/user/mas/DiffSBDD/data/cancer/cdk46/results/5L2S/moad/",
+                                   "/data/user/mas/DiffSBDD/data/cancer/cdk46/results/7SJ3/moad/",
+                     "--docking_targets", "5L2S", "7SJ3",
+                     "--outdir", "/data/user/mas/DiffSBDD/data/cancer/cdk46/"]
+        }
+    ]
+}

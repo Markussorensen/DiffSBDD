@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["/data/user/mas/DiffSBDD/models/models/moad_fullatom_joint.ckpt", "--test_dir", "/data/user/mas/DiffSBDD/data/bindingmoad/processed_noH_full/test/", "--outdir", "/data/user/mas/DiffSBDD/data/bindingmoad/output_inpaint/", "--sanitize"]
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["/data/user/mas/DiffSBDD/models/models/crossdocked_fullatom_joint.ckpt", 
+                     "--gpu_id", 1,
+                     "--pdbfile", "/data/user/mas/DiffSBDD/data/cancer/bcl2/6O0L.pdb",
+                     "--outdir", "/data/user/mas/DiffSBDD/data/cancer/bcl2/results/venetoclax_pocket_crossdiff/", 
+                     "--resi_list", "A:99 A:100 A:101 A:103 A:104 A:107 A:108 A:111 A:112 A:115 A:133 A:136 A:137 A:143 A:144 A:145 A:146 A:148 A:149 A:152 A:153 A:156 A:198 A:202", 
+                     "--batch_size", 10,
+                     "--n_samples", 30,
+                     "--num_nodes_lig", 8
+                    ]
+        }
+    ]
+}
